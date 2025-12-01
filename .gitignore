@@ -1,0 +1,46 @@
+# === DOSSIERS RACINE À IGNORER ===
+Backend/env_afri/
+Backend/venv/
+Backend/.venv/
+Backend/__pycache__/
+Backend/*.pyc
+Backend/*.pyo
+Backend/*.pyd
+Backend/media/
+Backend/db.sqlite3
+Backend/.env
+Backend/.env.*
+
+Frontend/node_modules/
+Frontend/dist/
+Frontend/build/
+Frontend/.env
+Frontend/.env.*
+Frontend/.env.local
+Frontend/.env.development.local
+Frontend/.env.production.local
+
+# === FICHIERS SENSIBLES & TEMPORAIRES ===
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# === CACHE & BUILD ===
+__pycache__/
+*.pyc
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# === AUTRES ===
+Backend/staticfiles/
+Backend/celerybeat-schedule
+Backend/celerybeat.pid
