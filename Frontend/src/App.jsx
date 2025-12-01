@@ -1,16 +1,16 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useEffect } from "react";
 
-import useAuthStore from './stores/authStore';
-import Navbar from './components/Navbar';
-import ProtectedRoute from './components/ProtectedRoute';
+import useAuthStore from "./stores/authStore";
+import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-import Home from './pages/Home';
-import Register from './pages/auth/Register';
-import Login from './pages/auth/Login';
-import Profile from './pages/auth/Profile';
+import Home from "./pages/Home";
+import Register from "./pages/auth/Register";
+import Login from "./pages/auth/Login";
+import Profile from "./pages/auth/Profile";
 
 function App() {
   const { initialize } = useAuthStore();

@@ -16,7 +16,7 @@ htmlcov/
 
 # Env files
 .env
-.env.*
+
 
 # IDE
 .vscode/

@@ -9,13 +9,12 @@ Backend/*.pyd
 Backend/media/
 Backend/db.sqlite3
 Backend/.env
-Backend/.env.*
+
 
 Frontend/node_modules/
 Frontend/dist/
 Frontend/build/
 Frontend/.env
-Frontend/.env.*
 Frontend/.env.local
 Frontend/.env.development.local
 Frontend/.env.production.local

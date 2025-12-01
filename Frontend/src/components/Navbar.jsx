@@ -1,9 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Home, User, LogOut, Menu, X } from 'lucide-react';
-import { useState } from 'react';
-import useAuthStore from '../stores/authStore';
-import UserAvatar from './UserAvatar';
+import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Home, User, LogOut, Menu, X } from "lucide-react";
+import { useState } from "react";
+import useAuthStore from "../stores/authStore";
+import UserAvatar from "./UserAvatar";
 
 export default function Navbar() {
   const { user, isAuthenticated, logout } = useAuthStore();
@@ -12,7 +12,7 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     await logout();
-    navigate('/login');
+    navigate("/login");
   };
 
   return (
@@ -50,7 +50,9 @@ export default function Navbar() {
                 <div className="flex items-center space-x-3">
                   <UserAvatar user={user} size="md" />
                   <div>
-                    <p className="text-sm font-semibold text-gray-900">{user?.username}</p>
+                    <p className="text-sm font-semibold text-gray-900">
+                      {user?.username}
+                    </p>
                     <p className="text-xs text-gray-500">{user?.email}</p>
                   </div>
                 </div>

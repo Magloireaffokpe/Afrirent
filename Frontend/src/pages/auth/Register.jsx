@@ -1,12 +1,12 @@
 /**
  * Page d'inscription - Design moderne et sophistiqué
  */
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { motion } from 'framer-motion';
-import { UserPlus, Mail, Lock, User, Eye, EyeOff, Loader2 } from 'lucide-react';
-import useAuthStore from '../../stores/authStore';
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { motion } from "framer-motion";
+import { UserPlus, Mail, Lock, User, Eye, EyeOff, Loader2 } from "lucide-react";
+import useAuthStore from "../../stores/authStore";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ export default function Register() {
     formState: { errors },
   } = useForm();
 
-  const password = watch('password');
+  const password = watch("password");
 
   const onSubmit = async (data) => {
     try {
@@ -33,9 +33,9 @@ export default function Register() {
         first_name: data.first_name,
         last_name: data.last_name,
       });
-      navigate('/');
+      navigate("/");
     } catch (error) {
-      console.error('Erreur inscription:', error);
+      console.error("Erreur inscription:", error);
     }
   };
 
@@ -52,7 +52,7 @@ export default function Register() {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
         <motion.div
@@ -64,7 +64,7 @@ export default function Register() {
           transition={{
             duration: 15,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
       </div>
@@ -87,7 +87,8 @@ export default function Register() {
                 Bienvenue sur AfriRent
               </h1>
               <p className="text-primary-100 text-lg">
-                La plateforme de location entre particuliers la plus simple et sécurisée.
+                La plateforme de location entre particuliers la plus simple et
+                sécurisée.
               </p>
             </motion.div>
 
@@ -115,7 +116,8 @@ export default function Register() {
                 <div>
                   <h3 className="font-semibold mb-1">Communauté vérifiée</h3>
                   <p className="text-sm text-primary-100">
-                    Tous les utilisateurs passent par une vérification d'identité
+                    Tous les utilisateurs passent par une vérification
+                    d'identité
                   </p>
                 </div>
               </div>
@@ -151,12 +153,14 @@ export default function Register() {
                     </label>
                     <input
                       type="text"
-                      {...register('first_name', { required: 'Prénom requis' })}
+                      {...register("first_name", { required: "Prénom requis" })}
                       className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
                       placeholder="John"
                     />
                     {errors.first_name && (
-                      <p className="text-red-500 text-sm mt-1">{errors.first_name.message}</p>
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.first_name.message}
+                      </p>
                     )}
                   </div>
                   <div>
@@ -165,12 +169,14 @@ export default function Register() {
                     </label>
                     <input
                       type="text"
-                      {...register('last_name', { required: 'Nom requis' })}
+                      {...register("last_name", { required: "Nom requis" })}
                       className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
                       placeholder="Doe"
                     />
                     {errors.last_name && (
-                      <p className="text-red-500 text-sm mt-1">{errors.last_name.message}</p>
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.last_name.message}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -184,16 +190,18 @@ export default function Register() {
                     <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                     <input
                       type="text"
-                      {...register('username', {
-                        required: 'Username requis',
-                        minLength: { value: 3, message: 'Min. 3 caractères' },
+                      {...register("username", {
+                        required: "Username requis",
+                        minLength: { value: 3, message: "Min. 3 caractères" },
                       })}
                       className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
                       placeholder="johndoe"
                     />
                   </div>
                   {errors.username && (
-                    <p className="text-red-500 text-sm mt-1">{errors.username.message}</p>
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.username.message}
+                    </p>
                   )}
                 </div>
 
@@ -206,11 +214,11 @@ export default function Register() {
                     <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                     <input
                       type="email"
-                      {...register('email', {
-                        required: 'Email requis',
+                      {...register("email", {
+                        required: "Email requis",
                         pattern: {
                           value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                          message: 'Email invalide',
+                          message: "Email invalide",
                         },
                       })}
                       className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
@@ -218,7 +226,9 @@ export default function Register() {
                     />
                   </div>
                   {errors.email && (
-                    <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.email.message}
+                    </p>
                   )}
                 </div>
 
@@ -230,10 +240,10 @@ export default function Register() {
                   <div className="relative">
                     <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                     <input
-                      type={showPassword ? 'text' : 'password'}
-                      {...register('password', {
-                        required: 'Mot de passe requis',
-                        minLength: { value: 8, message: 'Min. 8 caractères' },
+                      type={showPassword ? "text" : "password"}
+                      {...register("password", {
+                        required: "Mot de passe requis",
+                        minLength: { value: 8, message: "Min. 8 caractères" },
                       })}
                       className="w-full pl-11 pr-11 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
                       placeholder="••••••••"
@@ -243,11 +253,17 @@ export default function Register() {
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                     >
-                      {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      {showPassword ? (
+                        <EyeOff className="w-5 h-5" />
+                      ) : (
+                        <Eye className="w-5 h-5" />
+                      )}
                     </button>
                   </div>
                   {errors.password && (
-                    <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.password.message}
+                    </p>
                   )}
                 </div>
 
@@ -259,25 +275,34 @@ export default function Register() {
                   <div className="relative">
                     <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                     <input
-                      type={showConfirmPassword ? 'text' : 'password'}
-                      {...register('password_confirm', {
-                        required: 'Confirmation requise',
+                      type={showConfirmPassword ? "text" : "password"}
+                      {...register("password_confirm", {
+                        required: "Confirmation requise",
                         validate: (value) =>
-                          value === password || 'Les mots de passe ne correspondent pas',
+                          value === password ||
+                          "Les mots de passe ne correspondent pas",
                       })}
                       className="w-full pl-11 pr-11 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
                       placeholder="••••••••"
                     />
                     <button
                       type="button"
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                     >
-                      {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      {showConfirmPassword ? (
+                        <EyeOff className="w-5 h-5" />
+                      ) : (
+                        <Eye className="w-5 h-5" />
+                      )}
                     </button>
                   </div>
                   {errors.password_confirm && (
-                    <p className="text-red-500 text-sm mt-1">{errors.password_confirm.message}</p>
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.password_confirm.message}
+                    </p>
                   )}
                 </div>
 
@@ -306,7 +331,7 @@ export default function Register() {
               {/* Login Link */}
               <div className="mt-6 text-center">
                 <p className="text-gray-600">
-                  Déjà un compte ?{' '}
+                  Déjà un compte ?{" "}
                   <Link
                     to="/login"
                     className="text-primary-600 font-semibold hover:text-primary-700 transition"

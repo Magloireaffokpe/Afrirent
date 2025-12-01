@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Shield, Zap, Users, ArrowRight } from 'lucide-react';
-import useAuthStore from '../stores/authStore';
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Shield, Zap, Users, ArrowRight } from "lucide-react";
+import useAuthStore from "../stores/authStore";
 
 export default function Home() {
   const { user, isAuthenticated } = useAuthStore();
@@ -25,20 +25,22 @@ export default function Home() {
               >
                 <div className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-6 py-3 rounded-full shadow-lg">
                   <p className="text-lg">
-                    👋 Bienvenue, <span className="font-bold">{user?.username}</span> !
+                    👋 Bienvenue,{" "}
+                    <span className="font-bold">{user?.username}</span> !
                   </p>
                 </div>
               </motion.div>
             )}
 
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
-              Louez et gagnez en
+              Vendez et gagnez en
               <span className="block bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
                 toute confiance
               </span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              La plateforme de location entre particuliers la plus sécurisée d'Afrique. Paiements protégés, utilisateurs vérifiés.
+              La plateforme de Vente entre particuliers la plus sécurisée
+              d'Afrique. Paiements protégés, utilisateurs vérifiés.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -103,21 +105,24 @@ export default function Home() {
             {[
               {
                 icon: Shield,
-                title: 'Paiements sécurisés',
-                description: 'Système de séquestre qui protège vos transactions. Votre argent est en sécurité jusqu\'à la livraison.',
-                color: 'from-green-400 to-green-600',
+                title: "Paiements sécurisés",
+                description:
+                  "Système de séquestre qui protège vos transactions. Votre argent est en sécurité jusqu'à la livraison.",
+                color: "from-green-400 to-green-600",
               },
               {
                 icon: Users,
-                title: 'Communauté vérifiée',
-                description: 'Tous les utilisateurs passent par une vérification d\'identité. Louez en toute confiance.',
-                color: 'from-blue-400 to-blue-600',
+                title: "Communauté vérifiée",
+                description:
+                  "Tous les utilisateurs passent par une vérification d'identité. Vendez en toute confiance.",
+                color: "from-blue-400 to-blue-600",
               },
               {
                 icon: Zap,
-                title: 'Simple et rapide',
-                description: 'Publiez une annonce en 2 minutes. Trouvez ce dont vous avez besoin instantanément.',
-                color: 'from-purple-400 to-purple-600',
+                title: "Simple et rapide",
+                description:
+                  "Publiez une annonce en 2 minutes. Trouvez ce dont vous avez besoin instantanément.",
+                color: "from-purple-400 to-purple-600",
               },
             ].map((feature, index) => (
               <motion.div
@@ -128,7 +133,9 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition"
               >
-                <div className={`w-16 h-16 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center mb-6`}>
+                <div
+                  className={`w-16 h-16 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center mb-6`}
+                >
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
@@ -154,11 +161,10 @@ export default function Home() {
               viewport={{ once: true }}
               className="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-3xl p-12 text-center text-white shadow-2xl"
             >
-              <h2 className="text-4xl font-bold mb-4">
-                Prêt à commencer ?
-              </h2>
+              <h2 className="text-4xl font-bold mb-4">Prêt à commencer ?</h2>
               <p className="text-xl mb-8 opacity-90">
-                Rejoignez des milliers d'utilisateurs qui louent et gagnent en toute sécurité
+                Rejoignez des milliers d'utilisateurs qui louent et gagnent en
+                toute sécurité
               </p>
               <Link
                 to="/register"

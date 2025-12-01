@@ -1,9 +1,20 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { User, Mail, Phone, MapPin, Calendar, Upload, Shield, Loader2, Save, Camera } from 'lucide-react';
-import useAuthStore from '../../stores/authStore';
-import { updateUser, verifyIdentity, getUserStats } from '../../services/api';
-import { toast } from 'react-toastify';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  User,
+  Mail,
+  Phone,
+  MapPin,
+  Calendar,
+  Upload,
+  Shield,
+  Loader2,
+  Save,
+  Camera,
+} from "lucide-react";
+import useAuthStore from "../../stores/authStore";
+import { updateUser, verifyIdentity, getUserStats } from "../../services/api";
+import { toast } from "react-toastify";
 
 export default function Profile() {
   const { user, updateUser: updateStoreUser } = useAuthStore();
@@ -11,19 +22,21 @@ export default function Profile() {
   const [loading, setLoading] = useState(false);
   const [stats, setStats] = useState(null);
   const [formData, setFormData] = useState({
-    first_name: user?.first_name || '',
-    last_name: user?.last_name || '',
-    bio: user?.bio || '',
-    phone_number: user?.profile?.phone_number || '',
-    address: user?.profile?.address || '',
-    dob: user?.profile?.dob || '',
+    first_name: user?.first_name || "",
+    last_name: user?.last_name || "",
+    bio: user?.bio || "",
+    phone_number: user?.profile?.phone_number || "",
+    address: user?.profile?.address || "",
+    dob: user?.profile?.dob || "",
   });
   const [avatarPreview, setAvatarPreview] = useState(user?.avatar_url);
   const [avatarFile, setAvatarFile] = useState(null);
 
   useEffect(() => {
     if (user?.id) {
-      getUserStats(user.id).then(res => setStats(res.data)).catch(console.error);
+      getUserStats(user.id)
+        .then((res) => setStats(res.data))
+        .catch(console.error);
     }
   }, [user]);
 
@@ -45,13 +58,13 @@ export default function Profile() {
     try {
       const data = { ...formData };
       if (avatarFile) data.avatar = avatarFile;
-      
+
       const response = await updateUser(user.id, data);
       updateStoreUser(response.data);
-      toast.success('Profil mis à jour avec succès !');
+      toast.success("Profil mis à jour avec succès !");
       setEditing(false);
     } catch (error) {
-      toast.error('Erreur lors de la mise à jour');
+      toast.error("Erreur lors de la mise à jour");
     } finally {
       setLoading(false);
     }
@@ -60,13 +73,13 @@ export default function Profile() {
   const handleVerifyIdentity = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    
+
     setLoading(true);
     try {
       await verifyIdentity(file);
-      toast.success('Document envoyé ! Vérification en cours.');
+      toast.success("Document envoyé ! Vérification en cours.");
     } catch (error) {
-      toast.error('Erreur lors de l\'envoi du document');
+      toast.error("Erreur lors de l'envoi du document");
     } finally {
       setLoading(false);
     }
@@ -93,14 +106,21 @@ export default function Profile() {
                 {editing && (
                   <label className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full cursor-pointer opacity-0 group-hover:opacity-100 transition">
                     <Camera className="w-8 h-8 text-white" />
-                    <input type="file" accept="image/*" onChange={handleAvatarChange} className="hidden" />
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleAvatarChange}
+                      className="hidden"
+                    />
                   </label>
                 )}
               </div>
               <div className="ml-6 flex-1">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h1 className="text-3xl font-bold text-gray-900">{user?.full_name}</h1>
+                    <h1 className="text-3xl font-bold text-gray-900">
+                      {user?.full_name}
+                    </h1>
                     <p className="text-gray-600">@{user?.username}</p>
                   </div>
                   {user?.is_verified && (
@@ -117,15 +137,21 @@ export default function Profile() {
             {stats && (
               <div className="grid grid-cols-3 gap-4 mb-6">
                 <div className="bg-primary-50 rounded-xl p-4 text-center">
-                  <div className="text-3xl font-bold text-primary-600">{stats.products_count}</div>
+                  <div className="text-3xl font-bold text-primary-600">
+                    {stats.products_count}
+                  </div>
                   <div className="text-sm text-gray-600">Produits</div>
                 </div>
                 <div className="bg-secondary-50 rounded-xl p-4 text-center">
-                  <div className="text-3xl font-bold text-secondary-600">{stats.transactions_count}</div>
+                  <div className="text-3xl font-bold text-secondary-600">
+                    {stats.transactions_count}
+                  </div>
                   <div className="text-sm text-gray-600">Transactions</div>
                 </div>
                 <div className="bg-green-50 rounded-xl p-4 text-center">
-                  <div className="text-3xl font-bold text-green-600">{stats.reviews_count}</div>
+                  <div className="text-3xl font-bold text-green-600">
+                    {stats.reviews_count}
+                  </div>
                   <div className="text-sm text-gray-600">Avis</div>
                 </div>
               </div>
@@ -175,12 +201,16 @@ export default function Profile() {
           transition={{ delay: 0.1 }}
           className="bg-white rounded-3xl shadow-lg p-8"
         >
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Informations personnelles</h2>
-          
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Informations personnelles
+          </h2>
+
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Prénom</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Prénom
+                </label>
                 <input
                   type="text"
                   name="first_name"
@@ -191,7 +221,9 @@ export default function Profile() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Nom</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Nom
+                </label>
                 <input
                   type="text"
                   name="last_name"
@@ -204,7 +236,9 @@ export default function Profile() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Biographie</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Biographie
+              </label>
               <textarea
                 name="bio"
                 value={formData.bio}
@@ -217,7 +251,9 @@ export default function Profile() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Email
+              </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
@@ -230,7 +266,9 @@ export default function Profile() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Téléphone</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Téléphone
+              </label>
               <div className="relative">
                 <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
@@ -246,7 +284,9 @@ export default function Profile() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Adresse</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Adresse
+              </label>
               <div className="relative">
                 <MapPin className="absolute left-3 top-4 text-gray-400 w-5 h-5" />
                 <textarea
@@ -262,7 +302,9 @@ export default function Profile() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Date de naissance</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Date de naissance
+              </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
@@ -293,12 +335,19 @@ export default function Profile() {
                   Vérifiez votre identité
                 </h3>
                 <p className="text-yellow-800 mb-4">
-                  Pour accéder à toutes les fonctionnalités et gagner la confiance de la communauté, vérifiez votre identité en téléchargeant une pièce d'identité (CNI ou Passeport).
+                  Pour accéder à toutes les fonctionnalités et gagner la
+                  confiance de la communauté, vérifiez votre identité en
+                  téléchargeant une pièce d'identité (CNI ou Passeport).
                 </p>
                 <label className="inline-flex items-center space-x-2 bg-yellow-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-yellow-700 transition cursor-pointer">
                   <Upload className="w-5 h-5" />
                   <span>Télécharger un document</span>
-                  <input type="file" accept="image/*,application/pdf" onChange={handleVerifyIdentity} className="hidden" />
+                  <input
+                    type="file"
+                    accept="image/*,application/pdf"
+                    onChange={handleVerifyIdentity}
+                    className="hidden"
+                  />
                 </label>
               </div>
             </div>
